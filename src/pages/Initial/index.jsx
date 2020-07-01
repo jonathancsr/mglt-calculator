@@ -1,8 +1,9 @@
 import React,{useCallback,useRef} from 'react'
 import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { IoMdRocket,IoMdSearch } from "react-icons/io";
+
+import logo from '../../assets/mgtl-logo.svg';
 
 import {Container,Input} from './styles'
 
@@ -27,8 +28,7 @@ function Initial(){
 
   return(
     <Container>
-      <h1>MGTL</h1>
-      <h1>Calculator</h1> 
+      <img src={logo} alt="logo"/>
       <Form ref={formRef} onSubmit={handleSubmit}> 
         <Input>
           <IoMdSearch size={20} />

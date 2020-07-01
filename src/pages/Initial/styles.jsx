@@ -8,33 +8,21 @@ export const Container = styled.div`
   place-content: center;
   align-items: center;
   
-  h1{
-    width:400px;
-    
-    font-family:'StarJedi', 'Helvetica';
-    font-size:98px;
-    color:#F9AC34;
-    text-align:center;
-  }
-  
   form{
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top:24px;
     
     button{
       width:50px;
       height:50px;
-      margin-top:20px;
+      margin-top:24px;
       background:#F9AC34;
       border-radius:50%;
       border:0;
     }
   }
-`;
-
-export const Form = styled.form`
-  
 `;
 
 export const Input = styled.div`
