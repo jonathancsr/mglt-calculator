@@ -5,30 +5,36 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  
   place-content: center;
   align-items: center;
   
   h1{
     width:400px;
-    font-size:108px;
+    
+    font-family:'StarJedi', 'Helvetica';
+    font-size:98px;
     color:#F9AC34;
+    text-align:center;
+  }
+  
+  form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    button{
+      width:50px;
+      height:50px;
+      margin-top:20px;
+      background:#F9AC34;
+      border-radius:50%;
+      border:0;
+    }
   }
 `;
 
 export const Form = styled.form`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   
-  button{
-    width:50px;
-    height:50px;
-    margin-top:20px;
-    background:#F9AC34;
-    border-radius:50%;
-    border:0;
-  }
 `;
 
 export const Input = styled.div`
