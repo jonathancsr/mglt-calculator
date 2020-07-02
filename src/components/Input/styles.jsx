@@ -2,8 +2,6 @@ import styled, { css } from 'styled-components';
 
 import ToolTip from '../ToolTip';
 
-
-
 export const Container = styled.div`
   width:450px;
   height:50px;

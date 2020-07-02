@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import {FiChevronLeft} from 'react-icons/fi'
 import {Link} from 'react-router-dom'
 
-import { Container, Banner, Header,Stops,Name } from './styles'
+import { Container, Banner, Header, Stops } from './styles'
 
 import logo from '../../assets/mgtl-logo.svg'
 import starshipImg from '../../assets/starships/milenium.jpg'
