@@ -15,6 +15,12 @@ export default createGlobalStyle`
     -webkit-font-smoothing:antialiased;
   }
 
+  #root{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
   body,input,button{
     font-family: 'Roboto Slab', serif;
     font-size: 16px;
