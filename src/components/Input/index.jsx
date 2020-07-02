@@ -1,36 +1,21 @@
 import React, {
-  InputHTMLAttributes,
   useEffect,
   useRef,
   useState,
   useCallback,
 } from 'react';
-import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
 import { FiAlertCircle } from 'react-icons/fi';
-import MaskedInput from 'react-text-mask'
-import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 
 import { Container, Error } from './styles';
 
-const defaultMaskOptions = {
-  prefix: '',
-  suffix: ' mgtl\'s',
-  includeThousandsSeparator: true,
-  thousandsSeparatorSymbol: '.',
-  integerLimit: 99, // limit length of integer numbers
-  allowNegative: false,
-  allowLeadingZeroes: false,
-};
-
-const Input = ({ name, icon: Icon, children,...rest }) => {
+function Input({ name, icon: Icon, children,...rest }){
   const inputRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const { fieldName, defaultValue, error, registerField } = useField("distance");
+  const { fieldName, defaultValue, error, registerField } = useField(name);
 
-  const Mask = createNumberMask(defaultMaskOptions)
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
@@ -38,11 +23,11 @@ const Input = ({ name, icon: Icon, children,...rest }) => {
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
-    setIsFilled(!!inputRef.current?.value);
+    setIsFilled(!!inputRef.current.value);
   }, []);
 
   useEffect(() => {
-    console.log(name)
+    console.log(inputRef.current.value)
     registerField({
       name: fieldName,
       ref: inputRef.current,
@@ -53,15 +38,14 @@ const Input = ({ name, icon: Icon, children,...rest }) => {
   return (
     <Container isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
       {Icon && <Icon size={20} />}
-      <MaskedInput
-        mask={Mask}
-         onFocus={handleInputFocus}
+
+    <input  
+        ref={inputRef}
+        onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
-        ref={inputRef}
-        {...rest}
-      />
-        {error && (
+        {...rest}/>
+      {error && (
         <Error title={error}>
           <FiAlertCircle color="#c53030" size={20} />
         </Error>
