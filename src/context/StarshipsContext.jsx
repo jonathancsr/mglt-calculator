@@ -49,7 +49,7 @@ export const StarshipProvider = ({children})  =>{
     
     while (response.data.next) {
       response = await api.get(response.data.next);
-      response.data.next = response.data.next.replace('http','https');
+      response.data.next = response.data.next !== null ? response.data.next.replace('http','https') : null;
       response.data.results.map(ship => {
         ship.consumableHours = getHoursOfConsumable(ship.consumables);
         ship.mgtlMaxDistance =
