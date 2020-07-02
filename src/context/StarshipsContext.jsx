@@ -43,22 +43,21 @@ export const StarshipProvider = ({children})  =>{
         next:"/starships/"
       }
     };
-    if(starship.size === 0)
-    {
-      while (response.data.next) {
-        response = await api.get(response.data.next);
-        response.data.results.map(ship => {
-          ship.consumableHours = getHoursOfConsumable(ship.consumables);
-          ship.mgtlMaxDistance =
-            ship.consumableHours * (ship.MGLT !== 'unknown' ? ship.MGLT : 0);
-          return starshipsResponse.push(ship);
-        });
-      }
-      localStorage.setItem('@MGTL:starships',JSON.stringify(starshipsResponse));
+    
+    while (response.data.next) {
+      response = await api.get(response.data.next);
+      response.data.results.map(ship => {
+        ship.consumableHours = getHoursOfConsumable(ship.consumables);
+        ship.mgtlMaxDistance =
+          ship.consumableHours * (ship.MGLT !== 'unknown' ? ship.MGLT : 0);
+        return starshipsResponse.push(ship);
+      });
     }
+    localStorage.setItem('@MGTL:starships',JSON.stringify(starshipsResponse));
+    
     setStarship(starshipsResponse);
 
-  },[starship.size]) 
+  },[]) 
 
 
   const getSpaceshipsStopsInOrder = useCallback((distance) => {
