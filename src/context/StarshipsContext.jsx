@@ -65,7 +65,7 @@ export const StarshipProvider = ({children})  =>{
     let ships = starship;
     distance = parseInt(distance);
     ships.map(ship =>{
-      ship.stops = (ship.mgtlMaxDistance / distance)*1000;
+      ship.stops = (ship.mgtlMaxDistance / distance);
     })
     ships.sort((a, b) => b.stops-a.stops);
     setStarship(ships);
