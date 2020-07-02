@@ -3,7 +3,6 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { IoMdRocket,IoMdSearch } from "react-icons/io";
 import {useHistory} from 'react-router-dom'
-import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 
 import logo from '../../assets/mgtl-logo.svg';
 import {StarshipsContext} from '../../context/StarshipsContext' 
@@ -12,23 +11,12 @@ import Input from '../../components/Input'
 
 import {Container} from './styles'
 
-const defaultMaskOptions = {
-  prefix: '',
-  suffix: ' mgtl\'s',
-  includeThousandsSeparator: true,
-  thousandsSeparatorSymbol: '.',
-  integerLimit: 99, // limit length of integer numbers
-  allowNegative: false,
-  allowLeadingZeroes: false,
-};
 
 function Initial(){
   const formRef = useRef(null);
   
   const history = useHistory();
   const {getStarships, getSpaceshipsStopsInOrder} = useContext(StarshipsContext);
-  
-  const Mask = createNumberMask(defaultMaskOptions)
 
   useEffect( () =>{
     getStarships();
@@ -57,10 +45,9 @@ function Initial(){
   return (
     <Container>
       <img src={logo} alt="logo" />
-      <h2>Input the distance to receive a list of the best starships to fly</h2>
+      <h2>Input distance to receive a list with the best starships to fly</h2>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <Input
-          mask={Mask}
           name="distance"
           icon={IoMdSearch}
           type="number"
