@@ -1,4 +1,4 @@
-import React,{useCallback,useEffect,useRef, useContext} from 'react'
+import React,{useCallback, useEffect, useRef, useContext} from 'react'
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { IoMdRocket,IoMdSearch } from "react-icons/io";
@@ -39,7 +39,7 @@ function Initial(){
     try {
       const schema = Yup.object().shape({
         distance: Yup.string()
-          .required('Distancia a ser percorrida obrigatória'),
+          .required('Distance to be traveled mandatory'),
       });
 
      await schema.validate(data, {
@@ -53,7 +53,6 @@ function Initial(){
       formRef.current.setErrors(errors);
     }
   }, [history,getSpaceshipsStopsInOrder])
-
 
   return (
     <Container>
