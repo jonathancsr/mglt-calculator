@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import { Container, Banner, Header, Item } from './styles'
 
 import logo from '../../assets/mgtl-logo.svg'
-import starshipImg from '../../assets/starships/milenium.jpg'
 
 import { StarshipsContext } from '../../context/StarshipsContext';
 
@@ -25,14 +24,20 @@ function Result(){
           return (
             <Banner key={ship.name}>
               <Item>
-                <h1>Stops</h1>
-                <p>{ship.stops === 0 ? "No stops needed" : ship.stops}</p>
+                {ship.stops === 0 ? <p>No stops needed</p> : (
+                  <>
+                    {ship.stops !== "Unknown Data" ? (<h1>Stops</h1>) : ""}
+                    <p>{ship.stops}</p>
+                  </>
+                )
+                }
+                
               </Item>
               <Item>
                 <h1>Name</h1>
                 <p>{ship.name}</p>
               </Item>
-              <img src={starshipImg} alt="Milleniun Falcoom"/>
+              <img src={ship.image} alt="Milleniun Falcoom"/>
             </Banner>
           );
         })}
