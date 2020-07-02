@@ -52,8 +52,7 @@ export const StarshipProvider = ({children})  =>{
       response.data.next = response.data.next !== null ? response.data.next.replace('http','https') : null;
       response.data.results.map(ship => {
         ship.consumableHours = getHoursOfConsumable(ship.consumables);
-        ship.mgtlMaxDistance =
-          ship.consumableHours * (ship.MGLT !== 'unknown' ? ship.MGLT : 0);
+        ship.mgtlMaxDistance = ship.consumableHours * (ship.MGLT !== 'unknown' ? ship.MGLT : 0);
         return starshipsResponse.push(ship);
       });
     }
@@ -67,7 +66,7 @@ export const StarshipProvider = ({children})  =>{
     let ships = starship;
     distance = parseInt(distance);
     ships.map(ship =>{
-      ship.stops = (distance /ship.mgtlMaxDistance);
+      ship.stops = Math.trunc(ship.mgtlMaxDistance  !== 0 ? (distance /ship.mgtlMaxDistance) : 0);
       return ship; 
     })
     ships.sort((a, b) => b.stops - a.stops);
