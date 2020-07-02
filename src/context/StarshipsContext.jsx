@@ -1,6 +1,5 @@
 import React, {createContext, useCallback, useState} from 'react';
 import api from '../services/Api';
-import { number } from 'yup';
 
 export const StarshipsContext = createContext({});
 
