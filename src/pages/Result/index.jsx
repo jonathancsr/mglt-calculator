@@ -10,12 +10,7 @@ import starshipImg from '../../assets/starships/milenium.jpg'
 import { StarshipsContext } from '../../context/StarshipsContext';
 
 function Result(){
-  
   const {starship} = useContext(StarshipsContext)
-
-
-
-
   return(
     <>
       <Header>
@@ -26,22 +21,21 @@ function Result(){
             </Link>
         </Header>
       <Container>
-      {starship && starship.map(ship => {
-        return (
-          <Banner>
-          <Stops>
-            <p>Stops</p>
-            <h1>{ship.stops}</h1>
-          </Stops>
-          <Name>
-            <p>{ship.name}</p>
-          </Name>
-          <img src={starshipImg} alt="Milleniun Falcoom"/>
-        </Banner>
-        );
-      })}
-
-        
+        {starship && starship.map(ship => {
+          return (
+            <Banner>
+              <Stops>
+                <h1>Stops</h1>
+                <p>{ship.stops}</p>
+              </Stops>
+              <Stops>
+                <h1>Name</h1>
+                <p>{ship.name}</p>
+              </Stops>
+              <img src={starshipImg} alt="Milleniun Falcoom"/>
+            </Banner>
+          );
+        })}
       </Container>
     </>
   );

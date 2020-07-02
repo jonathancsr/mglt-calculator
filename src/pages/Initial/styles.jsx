@@ -8,6 +8,13 @@ export const Container = styled.div`
   place-content: center;
   align-items: center;
   
+  img{
+    margin-bottom:10px;
+  }
+
+  h2{
+    
+  }
   form{
     display: flex;
     align-items: center;
@@ -21,6 +28,12 @@ export const Container = styled.div`
       background:#F9AC34;
       border-radius:50%;
       border:0;
+      transition: transform 0.2s;
+
+      &:hover{
+        background:rgb(55,132,214);
+        transform: scale(1.2) ;
+      }
     }
   }
 `;

@@ -5,21 +5,11 @@ import ToolTip from '../ToolTip';
 
 
 export const Container = styled.div`
-  
-  
-  
   width:450px;
   height:50px;
 
-
   border-radius: 10px;
   padding:16px;
-
- 
-
-
-  
-  
   
   background: #232129;
   border-radius: 10px;
@@ -39,20 +29,20 @@ export const Container = styled.div`
   ${props =>
     props.isErrored &&
     css`
-      border-color: #c53030;
+      border-color: rgb(229,17,21);
     `}
 
   ${props =>
     props.isFocused &&
     css`
-      color: #ff9000;
-      border-color: #ff9000;
+      color: rgb(55,132,214);
+      border-color: rgb(55,132,214);
     `}
 
   ${props =>
     props.isFilled &&
     css`
-      color: #ff9000;
+      color: rgb(135,220,90);
     `}
     
   input {
@@ -69,7 +59,18 @@ export const Container = styled.div`
 
   svg {
     margin-right: 16px;
-    color:#F9AC34;
+
+    ${props =>
+    props.isErrored &&
+    css`
+      color: rgb(229,17,21);
+    `}
+
+  ${props =>
+    props.isFocused &&
+    css`
+      color: rgb(55,132,214);
+    `}
   }
 `;
 
@@ -82,10 +83,10 @@ export const Error = styled(ToolTip)`
   }
 
   span {
-    background: #c53030;
+    background: rgb(229,17,21);
     color: #fff;
     &::before {
-      border-color: #c53030 transparent;
+      border-color:  rgb(229,17,21) transparent;
     }
   }
 `;

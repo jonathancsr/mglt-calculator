@@ -41,23 +41,44 @@ export const Banner = styled.div`
   height: 100px;
 
   display: flex;
-  place-content: center;
-  align-items: center;
-
   background: #212E38;
   border-radius: 10px;
   justify-content: space-between;
-  
+  font-family: 'Roboto', sans-serif;
+  transition: transform 0.2s;
+
+  h1 {
+    font-size:18px;
+    font-weight:500;
+  }
+
+  p{
+    margin-top:10px;
+    font-size:20px;
+    font-weight:400;
+  }
 
   & + div {
     margin-top:16px;
   }
+  
+  &:hover {
+      transform: translateX(10px) scale(1.05) ;
+  }
 
   img{
     height:100%;
+    border-radius: 0px 10px 10px 0px;
   }
 `;
 
 
-export const Name = styled.section``;
-export const Stops = styled.section``;
+export const Name = styled.div``;
+
+export const Stops = styled.div`
+  width: 150px;
+  flex-direction:column;
+  display:flex;
+  margin:auto 30px;
+  text-align: center;
+`;
