@@ -34,7 +34,9 @@ export const Container = styled.div`
       transition: transform 0.2s;
 
       &:hover{
-        background:rgb(55,132,214);
+        -webkit-box-shadow: 0px 2px 15px 2px rgba(54,134,195,0.7);
+        -moz-box-shadow:    0px 2px 15px 2px rgba(54,134,195,0.7);
+        box-shadow:         0px 2px 15px 2px rgba(255,255,255,0.15);
         transform: scale(1.2) ;
       }
     }
