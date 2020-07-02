@@ -51,14 +51,14 @@ export const StarshipProvider = ({children})  =>{
           ship.consumableHours = getHoursOfConsumable(ship.consumables);
           ship.mgtlMaxDistance =
             ship.consumableHours * (ship.MGLT !== 'unknown' ? ship.MGLT : 0);
-          starshipsResponse.push(ship);
+          return starshipsResponse.push(ship);
         });
       }
       localStorage.setItem('@MGTL:starships',JSON.stringify(starshipsResponse));
     }
     setStarship(starshipsResponse);
 
-  },[]) 
+  },[starship.size]) 
 
 
   const getSpaceshipsStopsInOrder = useCallback((distance) => {
@@ -66,10 +66,11 @@ export const StarshipProvider = ({children})  =>{
     distance = parseInt(distance);
     ships.map(ship =>{
       ship.stops = (ship.mgtlMaxDistance / distance);
+      return ship; 
     })
     ships.sort((a, b) => b.stops-a.stops);
     setStarship(ships);
-  },[])
+  },[starship])
   
   return (
     <StarshipsContext.Provider value={{starship, getStarships, getSpaceshipsStopsInOrder}}>

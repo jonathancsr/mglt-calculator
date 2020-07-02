@@ -27,7 +27,6 @@ function Input({ name, icon: Icon, children,...rest }){
   }, []);
 
   useEffect(() => {
-    console.log(inputRef.current.value)
     registerField({
       name: fieldName,
       ref: inputRef.current,

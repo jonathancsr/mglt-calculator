@@ -3,7 +3,6 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { IoMdRocket,IoMdSearch } from "react-icons/io";
 import {useHistory} from 'react-router-dom'
-import MaskedInput from 'react-text-mask'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 
 import logo from '../../assets/mgtl-logo.svg';
@@ -27,7 +26,7 @@ function Initial(){
   const formRef = useRef(null);
   
   const history = useHistory();
-  const {starships, getStarships, getSpaceshipsStopsInOrder} = useContext(StarshipsContext);
+  const {getStarships, getSpaceshipsStopsInOrder} = useContext(StarshipsContext);
   
   const Mask = createNumberMask(defaultMaskOptions)
 
@@ -47,7 +46,6 @@ function Initial(){
         abortEarly: false,
       });
 
-      console.log(starships);
       getSpaceshipsStopsInOrder(data.distance);
       history.push('/dashboard')
     } catch (error) {
