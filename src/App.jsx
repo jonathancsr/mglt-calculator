@@ -1,21 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router} from 'react-router-dom'
 
 import GlobalStyle from "./styles/global";
 
-import {StarshipProvider} from './context/StarshipsContext'
+import {StarshipProvider} from './context/StarshipsContext';
 
-import Initial from './pages/Initial'
-import Result from './pages/Result'
+import Routes from './routes';
 
 function App() {
   return(
-    <>
+    <Router>
       <StarshipProvider>
-        <Initial/>
-        <Result/>
+        <Routes/>
       </StarshipProvider>
       <GlobalStyle/>
-    </>
+    </Router>
   );
 };
 
