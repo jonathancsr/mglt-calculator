@@ -13,8 +13,11 @@ export const Container = styled.div`
   }
 
   h2{
-    
+    font-family: 'Roboto', sans-serif;
+    font-weight:300;
+    font-size: 20px;
   }
+  
   form{
     display: flex;
     align-items: center;
