@@ -23,25 +23,26 @@ export const Container = styled.div`
     margin-top: 8px;
   }
 
+  ${props =>
+    props.isFilled &&
+    css`
+      border-color: rgb(135,220,90);
+      color: rgb(135,220,90);
+  `}
 
   ${props =>
     props.isErrored &&
     css`
       border-color: rgb(229,17,21);
-    `}
+  `}
 
   ${props =>
     props.isFocused &&
     css`
       color: rgb(55,132,214);
       border-color: rgb(55,132,214);
-    `}
+  `}
 
-  ${props =>
-    props.isFilled &&
-    css`
-      color: rgb(135,220,90);
-    `}
     
   input {
     flex: 1;

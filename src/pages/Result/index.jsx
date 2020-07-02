@@ -26,7 +26,7 @@ function Result(){
             <Banner>
               <Stops>
                 <h1>Stops</h1>
-                <p>{ship.stops}</p>
+                <p>{ship.stops === 0 ? "No stops needed" : ship.stops}</p>
               </Stops>
               <Stops>
                 <h1>Name</h1>

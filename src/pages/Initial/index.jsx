@@ -64,8 +64,8 @@ function Initial(){
           mask={Mask}
           name="distance"
           icon={IoMdSearch}
-          type="text"
-          placeholder="1.000 mgtl's"
+          type="number"
+          placeholder="1.000.000 mgtl's"
         />
         <button type="submit">
           <IoMdRocket size={30} />

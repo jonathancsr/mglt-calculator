@@ -1,5 +1,6 @@
 import React, {createContext, useCallback, useState} from 'react';
 import api from '../services/Api';
+import { number } from 'yup';
 
 export const StarshipsContext = createContext({});
 
@@ -66,10 +67,16 @@ export const StarshipProvider = ({children})  =>{
     let ships = starship;
     distance = parseInt(distance);
     ships.map(ship =>{
-      ship.stops = Math.trunc(ship.mgtlMaxDistance  !== 0 ? (distance /ship.mgtlMaxDistance) : 0);
+      ship.stops = ship.mgtlMaxDistance  !== 0 ?  Math.trunc(distance /ship.mgtlMaxDistance) : "Unknown Data";
       return ship; 
     })
-    ships.sort((a, b) => b.stops - a.stops);
+
+    ships.sort((a, b) => {
+      if(a.stops === "Unknown Data" || b.stops === "Unknown Data")
+        return 1;
+      return(b.stops - a.stops);
+    });
+    
     setStarship(ships);
   },[starship])
   
