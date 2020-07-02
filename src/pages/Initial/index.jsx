@@ -1,41 +1,58 @@
-import React,{useCallback,useRef} from 'react'
+import React,{useCallback,useEffect,useRef, useContext} from 'react'
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { IoMdRocket,IoMdSearch } from "react-icons/io";
 
 import logo from '../../assets/mgtl-logo.svg';
+import {StarshipsContext} from '../../context/StarshipsContext' 
+import getValidationErrors from '../../utils/getValidationErrors'
+import Input from '../../components/Input'
 
-import {Container,Input} from './styles'
+import {Container} from './styles'
+
 
 function Initial(){
   const formRef = useRef(null);
+  
+  
+  const {getStarships, starship} = useContext(StarshipsContext);
+  
+  useEffect( () =>{
+    getStarships();
+  },[getStarships])
+
   const handleSubmit = useCallback(async(data)=>{
     try {
+    formRef.current.setErrors({});
       const schema = Yup.object().shape({
-        email: Yup.string()
-          .required('E-mail obrigatório')
-          .email('Digite um e-mail válido'),
-        password: Yup.string().required('Senha obrigatória'),
+        distance: Yup.string()
+          .required('Distancia a ser percorrida obrigatória'),
       });
+
       await schema.validate(data, {
         abortEarly: false,
       });
-    } catch (error) {/*
-      const errors = getValidationErrors(error);
-      formRef.current?.setErrors(errors);*/
-    }
-  }, [])
 
-  return(
+      console.log(starship);
+    } catch (error) {
+      const errors = getValidationErrors(error);
+      formRef.current.setErrors(errors);
+    }
+  }, [starship])
+
+
+  return (
     <Container>
-      <img src={logo} alt="logo"/>
-      <Form ref={formRef} onSubmit={handleSubmit}> 
-        <Input>
-          <IoMdSearch size={20} />
-          <input type="text" placeholder="1.000 mgtl's"/>
-        </Input>
-        <button type={"submit"}>
-          <IoMdRocket size={30}/>
+      <img src={logo} alt="logo" />
+      <h2>Input the distance to receive a list of the best starships to fly</h2>
+      <Form ref={formRef} onSubmit={handleSubmit}>
+        <Input
+          name="distance"
+          icon={IoMdSearch}
+          placeholder="1.000 mgtl's"
+        />
+        <button type={'submit'}>
+          <IoMdRocket size={30} />
         </button>
       </Form>
     </Container>

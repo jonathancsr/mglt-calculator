@@ -24,27 +24,3 @@ export const Container = styled.div`
     }
   }
 `;
-
-export const Input = styled.div`
-  width:450px;
-  height:50px;
-
-  display:flex;
-  align-items:center;
-
-  border: solid #F9AC34 2px;
-  border-radius: 10px;
-  padding:16px;
-
-  input{
-    flex:1;
-    background:transparent;
-    border:0;
-    color:#f4ede8;
-    padding:10px;
-  }
-
-  svg {
-    color:#F9AC34;
-  }
-`;
