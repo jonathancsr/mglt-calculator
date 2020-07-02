@@ -26,22 +26,22 @@ export const Container = styled.div`
   ${props =>
     props.isFilled &&
     css`
-      border-color: rgb(135,220,90);
-      color: rgb(135,220,90);
-  `}
+      border-color: rgb(135, 220, 90);
+      color: rgb(135, 220, 90);
+    `}
 
   ${props =>
     props.isErrored &&
     css`
-      border-color: rgb(229,17,21);
-  `}
+      border-color: rgb(229, 17, 21);
+    `}
 
   ${props =>
     props.isFocused &&
     css`
-      color: rgb(55,132,214);
-      border-color: rgb(55,132,214);
-  `}
+      color: rgb(55, 132, 214);
+      border-color: rgb(55, 132, 214);
+    `}
 
     
   input {
@@ -55,20 +55,28 @@ export const Container = styled.div`
       color: #666360;
     }
   }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 
   svg {
     margin-right: 16px;
 
     ${props =>
-    props.isErrored &&
-    css`
-      color: rgb(229,17,21);
-    `}
+      props.isErrored &&
+      css`
+        color: rgb(229, 17, 21);
+      `}
 
   ${props =>
     props.isFocused &&
     css`
-      color: rgb(55,132,214);
+      color: rgb(55, 132, 214);
     `}
   }
 `;

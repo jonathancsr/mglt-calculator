@@ -44,7 +44,7 @@ function Input({ name, icon: Icon, children,...rest }){
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
         {...rest}/>
-      {error && (
+        {error && (
         <Error title={error}>
           <FiAlertCircle color="#c53030" size={20} />
         </Error>
