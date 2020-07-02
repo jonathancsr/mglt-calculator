@@ -27,7 +27,14 @@ function getHoursOfConsumable(consumables) {
 
 export const StarshipProvider = ({children})  =>{
   
-  const [starship, setStarship] = useState([]);
+  const [starship, setStarship] = useState(()=>{
+    const localStarships = localStorage.getItem('@MGTL:starships');
+
+    if(localStarships)
+      return JSON.parse(localStarships);
+
+    return [];
+  });
  
   const getStarships = useCallback(async() => {
     let starshipsResponse = [];
@@ -36,21 +43,36 @@ export const StarshipProvider = ({children})  =>{
         next:"/starships/"
       }
     };
-
-    while(response.data.next){
-      response = await api.get(response.data.next);
-      
-      response.data.results.map(ship => {
-          ship.consumableHours = getHoursOfConsumable(ship.consumables); 
-          ship.mgtlMaxDistance = ship.consumableHours * (ship.MGLT !== "unknown" ? ship.MGLT : 0);
+    if(starship.size === 0)
+    {
+      while (response.data.next) {
+        response = await api.get(response.data.next);
+        response.data.results.map(ship => {
+          ship.consumableHours = getHoursOfConsumable(ship.consumables);
+          ship.mgtlMaxDistance =
+            ship.consumableHours * (ship.MGLT !== 'unknown' ? ship.MGLT : 0);
           starshipsResponse.push(ship);
-      })
-    };
+        });
+      }
+      localStorage.setItem('@MGTL:starships',JSON.stringify(starshipsResponse));
+    }
     setStarship(starshipsResponse);
+
   },[]) 
+
+
+  const getSpaceshipsStopsInOrder = useCallback((distance) => {
+    let ships = starship;
+    distance = parseInt(distance);
+    ships.map(ship =>{
+      ship.stops = (ship.mgtlMaxDistance / distance)*1000;
+    })
+    ships.sort((a, b) => b.stops-a.stops);
+    setStarship(ships);
+  },[])
   
   return (
-    <StarshipsContext.Provider value={{starship, getStarships}}>
+    <StarshipsContext.Provider value={{starship, getStarships, getSpaceshipsStopsInOrder}}>
       {children}
     </StarshipsContext.Provider>
   )
