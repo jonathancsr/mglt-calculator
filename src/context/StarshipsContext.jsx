@@ -20,6 +20,9 @@ function getHoursOfConsumable(consumables) {
     case 'day':
     case 'days':
       return (number * 24);
+    case'hour':
+    case'hours':
+      return number;
     default:
      return 0;
   } 
@@ -46,6 +49,7 @@ export const StarshipProvider = ({children})  =>{
     
     while (response.data.next) {
       response = await api.get(response.data.next);
+      response.data.next = response.data.next.replace('http','https');
       response.data.results.map(ship => {
         ship.consumableHours = getHoursOfConsumable(ship.consumables);
         ship.mgtlMaxDistance =
@@ -59,15 +63,14 @@ export const StarshipProvider = ({children})  =>{
 
   },[]) 
 
-
   const getSpaceshipsStopsInOrder = useCallback((distance) => {
     let ships = starship;
     distance = parseInt(distance);
     ships.map(ship =>{
-      ship.stops = (ship.mgtlMaxDistance / distance);
+      ship.stops = (distance /ship.mgtlMaxDistance);
       return ship; 
     })
-    ships.sort((a, b) => b.stops-a.stops);
+    ships.sort((a, b) => b.stops - a.stops);
     setStarship(ships);
   },[starship])
   
