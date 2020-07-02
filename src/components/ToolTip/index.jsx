@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from './styles';
 
 
-const ToolTip = ({ title, className, children }) => {
+function ToolTip({ title, className, children }) {
   return (
     <Container className={className}>
       {children}
