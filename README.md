@@ -4,7 +4,7 @@ The MGTL Calculator returns a list with how many stops will be needed to cover t
 
 ## Receipt
 
-(MGLT \* consumables) / distancie = number of stops
+distancie / (MGLT \* consumables) = number of stops
 
 ## Technologies
 
