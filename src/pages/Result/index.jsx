@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import { Container, Banner, Header, Item, Title } from './styles';
+import { Container, Banner, Header, Item } from './styles';
 
 import logo from '../../assets/mgtl-logo.svg';
 
