@@ -11,3 +11,7 @@ The MGTL Calculator returns a list with how many stops will be needed to cover t
 - React
 - axios
 - Styled Components
+- polished
+- unform
+- yup
+- react-icons
