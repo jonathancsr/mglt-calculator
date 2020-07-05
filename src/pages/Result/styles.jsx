@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 100%;
@@ -43,9 +44,12 @@ export const Header = styled.header`
   }
 `;
 
-export const Banner = styled.div`
+export const Banner = styled(Link)`
   width: 100%;
   height: 100px;
+
+  text-decoration: none;
+  color: #fff;
 
   display: flex;
   background: #bb8b42;
@@ -64,7 +68,7 @@ export const Banner = styled.div`
     font-weight: 400;
   }
 
-  & + div {
+  & + a {
     margin-top: 16px;
     background: #4a4a4a;
   }
